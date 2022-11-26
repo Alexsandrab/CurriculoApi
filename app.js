@@ -5,7 +5,7 @@ const PORT = process.env.PORT || 3001;
 const app = express();
 
 mongoose.connect(
-    process.env.MONGO_URI || "mongodb://localhost:27017/ApiRestCurriculo",
+    process.env.MONGO_URI || "mongodb://localhost:27017/ApiRestCurriculo/",
     {
         useNewUrlParser: true,
         useUnifiedTopology: true,
