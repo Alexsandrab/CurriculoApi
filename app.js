@@ -1,14 +1,14 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const dadosRouter = require('./routes/dadosPesssoaisRoutes')
+const dadosRouter = require('./routes/dadosPessoaisRoutes')
 const PORT = process.env.PORT || 3001;
 const app = express();
+app.use(express.urlencoded({ extended: true }));
 
-mongoose.connect(
-    process.env.MONGO_URI || "mongodb://0.0.0.0:27017/ApiRestCurriculo",
+mongoose.connect("mongodb://0.0.0.0:27017/ApiRestCurriculo",
     {
         useNewUrlParser: true,
-        useUnifiedTopology: true,
+        useUnifiedTopology: false,
     },
     (err) => {
         if(err){
@@ -19,8 +19,10 @@ mongoose.connect(
     });
 
 
-app.use(express.json());
-app.use("/curriculo/dados", dadosRouter)
 app.listen(PORT, () =>{
     console.log(`Servidor está rodando na porta: ${PORT}`);
 });
+
+app.use(express.json());
+app.use("/dados", dadosRouter);
+app.use("/dados:id", dadosRouter);
