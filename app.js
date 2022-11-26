@@ -5,11 +5,10 @@ const PORT = process.env.PORT || 3001;
 const app = express();
 
 mongoose.connect(
-    process.env.MONGO_URI || "mongodb://localhost/ApiRestCurriculo",
+    process.env.MONGO_URI || "mongodb://127.0.0.1:27017/ApiRestCurriculo",
     {
         useNewUrlParser: true,
         useUnifiedTopology: true,
-        family:4,
     },
     (err) => {
         if(err){
@@ -21,7 +20,7 @@ mongoose.connect(
 
 
 app.use(express.json());
-app.use("/", dadosRouter)
+app.use("/curriculo/dados", dadosRouter)
 app.listen(PORT, () =>{
     console.log(`Servidor está rodando na porta: ${PORT}`);
 });
