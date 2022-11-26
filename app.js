@@ -20,7 +20,7 @@ mongoose.connect(
 
 
 app.use(express.json());
-app.use("/curriculo/dadosPessoais", dadosRouter)
+app.use("/", dadosRouter)
 app.listen(PORT, () =>{
     console.log(`Servidor está rodando na porta: ${PORT}`);
 });
