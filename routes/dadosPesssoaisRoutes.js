@@ -4,7 +4,7 @@ const {getAllDados, createDados, getDadosPeloId, updateDados, excluirDados} = re
 
 const router = express.Router();
 
-router.route("/").get(getAllDados).post(createDados);
+router.route("/dados").get(getAllDados).post(createDados);
 router.route("/:id").get(getDadosPeloId).put(updateDados).delete(excluirDados);
 
 module.exports = router;
